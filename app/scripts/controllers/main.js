@@ -8,10 +8,18 @@
  * Controller of the mmtApp
  */
 angular.module('mmtApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, Restangular) {
+
+    $scope.ports = [];
+
+
+    function fetch() {
+
+      $scope.ports = Restangular.all('port').getList().$object;
+
+    }
+
+    fetch();
+
+
   });
