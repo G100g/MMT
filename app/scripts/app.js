@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'restangular'
+    'restangular',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, RestangularProvider) {
     $routeProvider
@@ -29,5 +30,49 @@ angular
       });
 
     RestangularProvider.setBaseUrl(BASE_URL);
+
+  })
+
+  // Service to broadcast events
+
+  .factory('portsService', function ($rootScope, Restangular) {
+
+    var ports = Restangular.all('port'),
+        $ports;
+
+    return {
+
+      ports: ports,
+
+      getItems: function () {
+
+          $ports = ports.getList().$object;
+
+          return $ports;
+      }
+
+    };
+
+  })
+
+  .controller('HeaderCtrl', function ($scope, $modal) {
+
+    $scope.createPort = function () {
+
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'views/modalPort.html',
+        controller: 'ModalPortCtrl',
+      });
+
+      // modalInstance.result.then(function () {
+      //
+      //   // Send message to update listed
+      //
+      //   commService.updateItems();
+      //
+      // });
+
+    };
 
   });

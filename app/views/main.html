@@ -6,6 +6,10 @@
         <tr>
           <th>#</th>
           <th>Name</th>
+          <th>Code</th>
+          <th>Max Width</th>
+          <th>Max Length</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
 
@@ -13,7 +17,22 @@
 
         <tr ng-repeat="port in ports">
           <td>
+            {{port.id}}
+          </td>
+          <td>
             {{port.name}}
+          </td>
+          <td>
+            {{port.code}}
+          </td>
+          <td>
+            {{port.max_width}}
+          </td>
+          <td>
+            {{port.max_length}}
+          </td>
+          <td>
+            <button class="btn btn-xs btn-warning" ng-click="editPort(port)"><i class="glyphicon glyphicon-pencil"></i></button> <button class="btn btn-danger btn-xs" ng-click="deletePort(port)"><i class="glyphicon glyphicon-trash"></i></button>
           </td>
         </tr>
 
@@ -21,8 +40,5 @@
 
 
     </table>
-
-
-
 
 </div>

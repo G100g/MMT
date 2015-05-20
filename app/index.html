@@ -20,7 +20,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-controller="HeaderCtrl">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -37,7 +37,7 @@
 
           <div class="collapse navbar-collapse navbar-right" id="js-navbar-collapse">
 
-            <button type="button" class="btn btn-success navbar-btn">Create New</button>
+            <button type="button" class="btn btn-success navbar-btn" ng-click="createPort()">Create New</button>
 
           </div>
         </div>
@@ -61,6 +61,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -75,6 +76,8 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/modalport.js"></script>
+        <script src="scripts/controllers/modaleditport.js"></script>
         <!-- endbuild -->
 </body>
 </html>
