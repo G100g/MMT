@@ -15,7 +15,12 @@ angular.module('mmtApp')
 
     function fetch() {
 
-      $scope.ports = portsService.getItems();
+      // portsService.getItems().then(function (ports) {
+      //   $scope.ports = ports;
+      // });
+      portsService.getItems().then(function (ports) {
+        $scope.ports = ports;
+      });
 
     }
 
@@ -44,11 +49,11 @@ angular.module('mmtApp')
 
     $scope.deletePort = function (item) {
 
-      if (confirm("Do you want delete " + item.name + ' port?')) {
+      if (confirm('Do you want delete' + item.name + ' port?')) {
 
-        item.remove();
-
-        portsService.getItems();
+        item.remove().then(function () {
+          fetch();
+        });
 
       }
 

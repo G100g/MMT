@@ -27,7 +27,7 @@ angular.module('mmtApp')
 
     function saveItem() {
 
-        portsService.ports.post({
+        portsService.service.post({
 
           name: $scope.name,
           code: $scope.code,
@@ -36,7 +36,7 @@ angular.module('mmtApp')
 
         }).then(function (_item) {
 
-          portsService.getItems();
+          portsService.updateItems();
 
           $modalInstance.close();
 

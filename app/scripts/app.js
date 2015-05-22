@@ -37,18 +37,27 @@ angular
 
   .factory('portsService', function ($rootScope, Restangular) {
 
-    var ports = Restangular.all('port'),
+    var service = Restangular.all('port'),
         $ports;
+
+        console.log($ports);
 
     return {
 
-      ports: ports,
+      service: service,
+      $ports: $ports,
 
       getItems: function () {
 
-          $ports = ports.getList().$object;
+          this.$ports = this.service.getList();
 
-          return $ports;
+          return this.$ports;
+      },
+
+      updateItems: function () {
+
+        $rootScope.$emit('updateItems');
+
       }
 
     };
@@ -65,13 +74,7 @@ angular
         controller: 'ModalPortCtrl',
       });
 
-      // modalInstance.result.then(function () {
-      //
-      //   // Send message to update listed
-      //
-      //   commService.updateItems();
-      //
-      // });
+
 
     };
 
