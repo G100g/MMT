@@ -21,7 +21,7 @@ class CreatePortsTable extends Migration {
 			$table->string("code");
 			$table->integer("max_width");
 			$table->integer("max_length");
-			$table->string("polygon");
+			$table->text("polygon");
 
 		});
 	}
