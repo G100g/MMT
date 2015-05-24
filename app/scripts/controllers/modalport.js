@@ -17,6 +17,8 @@ angular.module('mmtApp')
     $scope.maxWidth = 0;
     $scope.maxLength = 0;
 
+    $scope.polygon = null;
+
     $scope.ok = function () {
       saveItem();
     };
@@ -27,12 +29,15 @@ angular.module('mmtApp')
 
     function saveItem() {
 
+        var polygon = $scope.polygon.getPath().getArray().join("|").replace(/[\(\)]/ig, '');
+
         portsService.service.post({
 
           name: $scope.name,
           code: $scope.code,
           max_width: $scope.maxWidth,
           max_length: $scope.maxLength,
+          polygon: polygon,
 
         }).then(function (_item) {
 

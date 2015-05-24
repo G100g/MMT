@@ -17,9 +17,10 @@ angular
     'ngSanitize',
     'ngTouch',
     'restangular',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'uiGmapgoogle-maps'
   ])
-  .config(function ($routeProvider, RestangularProvider) {
+  .config(function ($routeProvider, RestangularProvider, uiGmapGoogleMapApiProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -31,6 +32,12 @@ angular
 
     RestangularProvider.setBaseUrl(BASE_URL);
 
+    uiGmapGoogleMapApiProvider.configure({
+        //    key: 'your api key',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
+    });
+
   })
 
   // Service to broadcast events
@@ -39,8 +46,6 @@ angular
 
     var service = Restangular.all('port'),
         $ports;
-
-        console.log($ports);
 
     return {
 
@@ -73,8 +78,6 @@ angular
         templateUrl: 'views/modalPort.html',
         controller: 'ModalPortCtrl',
       });
-
-
 
     };
 

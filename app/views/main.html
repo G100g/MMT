@@ -1,3 +1,5 @@
+<h2>Manage Ports</h2>
+
 <div class="row">
 
     <table class="table">
@@ -6,7 +8,6 @@
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Code</th>
           <th>Max Width</th>
           <th>Max Length</th>
           <th>&nbsp;</th>
@@ -17,19 +18,17 @@
 
         <tr ng-repeat="port in ports">
           <td>
-            {{port.id}}
+            <span class="label label-default">{{port.id}}</span>
           </td>
           <td>
-            {{port.name}}
+            {{port.name}}<br>
+            <span class="label label-primary">{{port.code}}</span>
           </td>
           <td>
-            {{port.code}}
+            {{port.max_width}} <strong>m</strong>
           </td>
           <td>
-            {{port.max_width}}
-          </td>
-          <td>
-            {{port.max_length}}
+            {{port.max_length}} <strong>m</strong>
           </td>
           <td>
             <button class="btn btn-xs btn-warning" ng-click="editPort(port)"><i class="glyphicon glyphicon-pencil"></i></button> <button class="btn btn-danger btn-xs" ng-click="deletePort(port)"><i class="glyphicon glyphicon-trash"></i></button>

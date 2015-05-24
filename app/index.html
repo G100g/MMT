@@ -48,6 +48,8 @@
       <div ng-view=""></div>
     </div>
 
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing'></script>
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -59,25 +61,29 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <script>
-      var BASE_URL = './';
+      var BASE_URL = '../api/public/';
 
       if (location.hostname === 'localhost') {
         BASE_URL = 'http://g100g.local/cv/api/public/';
       }
     </script>
 
+
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/modalport.js"></script>
         <script src="scripts/controllers/modaleditport.js"></script>
+        <script src="scripts/controllers/mappolygon.js"></script>
         <!-- endbuild -->
 </body>
 </html>
