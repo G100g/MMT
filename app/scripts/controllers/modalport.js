@@ -29,7 +29,13 @@ angular.module('mmtApp')
 
     function saveItem() {
 
-        var polygon = $scope.polygon.getPath().getArray().join("|").replace(/[\(\)]/ig, '');
+        var polygon;
+
+        if ($scope.polygon !== null) {
+
+          polygon = $scope.polygon.getPath().getArray().join('|').replace(/[\(\)]/ig, '');
+
+        }
 
         portsService.service.post({
 
@@ -39,7 +45,7 @@ angular.module('mmtApp')
           max_length: $scope.maxLength,
           polygon: polygon,
 
-        }).then(function (_item) {
+        }).then(function () {
 
           portsService.updateItems();
 

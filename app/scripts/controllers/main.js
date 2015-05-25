@@ -15,9 +15,6 @@ angular.module('mmtApp')
 
     function fetch() {
 
-      // portsService.getItems().then(function (ports) {
-      //   $scope.ports = ports;
-      // });
       portsService.getItems().then(function (ports) {
         $scope.ports = ports;
       });
@@ -26,7 +23,7 @@ angular.module('mmtApp')
 
     $scope.editPort = function (item) {
 
-      var modalInstance = $modal.open({
+      $modal.open({
         animation: true,
         templateUrl: 'views/modalPort.html',
         controller: 'ModalEditPortCtrl',
@@ -36,14 +33,6 @@ angular.module('mmtApp')
           }
         }
       });
-
-      // modalInstance.result.then(function () {
-      //
-      //   // Send message to update listed
-      //
-      //   fetch();
-      //
-      // });
 
     };
 
@@ -56,14 +45,6 @@ angular.module('mmtApp')
         });
 
       }
-
-      // modalInstance.result.then(function () {
-      //
-      //   // Send message to update listed
-      //
-      //   fetch();
-      //
-      // });
 
     };
 

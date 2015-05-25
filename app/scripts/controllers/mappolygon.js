@@ -13,19 +13,73 @@ angular.module('mmtApp')
     var activeShape = false,
         gmaps,
         fillColor = '#ffff00',
-        fillOpacity =  0.5;
+        fillOpacity =  0.5,
+        coords = {
+          lat: 44.409112,
+          lon: 8.917342
+        };
 
-        $scope.render = true;
-        $scope.currentShape = null;
-
+    $scope.render = true;
+    $scope.currentShape = null;
 
     // Define Map
+
+
+    if ($scope.$parent.saved_polygon) {
+
+      coords = $scope.$parent.saved_polygon[0];
+
+    }
+
+    $scope.searchbox = {
+      template:'searchBox.tpl.html',
+      //position:'top-right',
+      position:'RIGHT_BOTTOM',
+      options: {
+        bounds: {}
+      },
+
+      events: {
+        places_changed: function (searchBox) {
+
+          var places = searchBox.getPlaces(),
+              bounds,
+              place;
+
+          if (places.length === 0) {
+            return;
+          }
+
+          bounds = new google.maps.LatLngBounds();
+
+          for (var i = 0, t = places.length; i < t ; i++) {
+
+            place = places[i];
+
+            bounds.extend(place.geometry.location);
+          }
+
+          $scope.map.bounds = {
+            northeast: {
+              latitude: bounds.getNorthEast().lat(),
+              longitude: bounds.getNorthEast().lng()
+            },
+            southwest: {
+              latitude: bounds.getSouthWest().lat(),
+              longitude: bounds.getSouthWest().lng()
+            }
+          };
+
+        }
+
+      }
+    };
 
     $scope.map = {
       map: {},
       center: {
-        latitude: 53.406754,
-        longitude: -2.158843
+        latitude: coords.lat,
+        longitude: coords.lon
       },
       pan: true,
       zoom: 14,
@@ -70,9 +124,9 @@ angular.module('mmtApp')
       // Load POLYGON
       setTimeout(function() {
 
-        loadPolygon($scope.$parent.saved_polygon);
+          loadPolygon($scope.$parent.saved_polygon);
 
-    }, 1000);
+      }, 1000);
 
     });
 
@@ -117,7 +171,7 @@ angular.module('mmtApp')
 
      dm = $scope.drawingManagerControl.getDrawingManager();
 
-     dm.setDrawingMode(null)
+     dm.setDrawingMode(null);
      dm.setOptions({
           drawingControl: activeShape
      });

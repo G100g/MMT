@@ -35,7 +35,7 @@ angular
     uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
         v: '3.17',
-        libraries: 'weather,geometry,visualization'
+        libraries: 'weather,geometry,visualization,places'
     });
 
   })
@@ -73,7 +73,7 @@ angular
 
     $scope.createPort = function () {
 
-      var modalInstance = $modal.open({
+      $modal.open({
         animation: true,
         templateUrl: 'views/modalPort.html',
         controller: 'ModalPortCtrl',

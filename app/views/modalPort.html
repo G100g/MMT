@@ -22,7 +22,7 @@
 
         <div class="form-group">
           <label for="codeFld">Code</label>
-          <input type="text" class="form-control" name="codeFld" placeholder="Enter Port Code" ng-model="code" required>
+          <input type="text" class="form-control" name="codeFld" placeholder="Enter Port Code" ng-model="code" required minlength="5" maxlength="5">
         </div>
 
       </div>
@@ -52,7 +52,18 @@
     </div>
 
 
+
+
+
+
+  </form>
     <div class="form-group" ng-controller="MapPolygonCtrl">
+
+      <script type="text/ng-template" id="searchBox.tpl.html">
+        <input id="pac-input" class="pac-controls" type="text" placeholder="Search">
+      </script>
+
+
       <ui-gmap-google-map ng-if="render"
 
            control="map.map"
@@ -67,12 +78,12 @@
 
           <ui-gmap-drawing-manager options="drawingManagerOptions" control="drawingManagerControl" events="drawEventHandler"></ui-gmap-drawing-manager>
 
+          <ui-gmap-search-box template="searchbox.template" events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+
       </ui-gmap-google-map>
 
       <button class="btn btn-xs btn-danger" ng-click="deleteShape()">Reset</button>
     </div>
-
-  </form>
 
 </div>
 
